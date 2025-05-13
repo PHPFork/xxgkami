@@ -625,7 +625,7 @@ try {
             <h2 class="card-title"><i class="fas fa-check-circle"></i> 卡密验证中心</h2>
             
             <?php if(!empty($debug_info)): ?>
-            <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #dee2e6;">
+            <div style="display:none; background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #dee2e6;">
                 <h4 style="margin-top:0; color:#dc3545;">调试信息:</h4>
                 <pre style="margin: 0; white-space: pre-wrap;"><?php echo htmlspecialchars($debug_info); ?></pre>
             </div>
@@ -686,6 +686,11 @@ try {
 
             <?php if(isset($card_detail)): ?>
             <div class="card-details">
+                <div class="form-actions">
+                    <button type="submit" name="verify_card" value="1" class="btn btn-primary">
+                        <i class="fas fa-check"></i> 填写您的收货地址
+                    </button>
+                </div>
                 <h3><i class="fas fa-info-circle"></i> 卡密详情</h3>
                 <div class="detail-item">
                     <div class="detail-label">卡密:</div>
@@ -907,6 +912,7 @@ try {
             <?php endif; ?>
             
             <?php if(isset($card_detail) && isset($_POST['form_type']) && $_POST['form_type'] === 'query'): ?>
+            <button>1</button>
             showCardDetails();
             <?php endif; ?>
         });
@@ -916,6 +922,12 @@ try {
             let modalHtml = `
             <div id="cardModal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; display:flex; justify-content:center; align-items:center;">
                 <div style="background:white; width:90%; max-width:500px; max-height:80vh; overflow-y:auto; border-radius:15px; padding:20px; box-shadow:0 5px 15px rgba(0,0,0,0.3);">
+
+                      <button type="submit" name="verify_card" value="1" class="btn btn-primary">
+                            <i class="fas fa-check"></i> 立即验证
+                        </button>
+
+
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
                         <h3 style="margin:0; color:#2c3e50;"><i class="fas fa-info-circle"></i> 卡密详情</h3>
                         <button onclick="closeModal()" style="border:none; background:none; cursor:pointer; font-size:20px; color:#7f8c8d;"><i class="fas fa-times"></i></button>

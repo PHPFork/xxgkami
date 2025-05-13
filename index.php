@@ -767,6 +767,7 @@ try {
             });
         }
             }
+            window.location.href = "verify.php" ;
         });
     </script>
 </body>
